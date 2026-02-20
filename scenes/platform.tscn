@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://mpsyfldf7f4h"]
+
+[ext_resource type="Texture2D" uid="uid://cdg8orhkxvl6n" path="res://assets/platform.png" id="1_ba0x2"]
+[ext_resource type="Script" uid="uid://clfl7lw8hwthj" path="res://scenes/platform.gd" id="1_nlgqw"]
+
+[node name="platform" type="StaticBody2D" unique_id=1126146458]
+script = ExtResource("1_nlgqw")
+
+[node name="Platform" type="Sprite2D" parent="." unique_id=1659923845]
+position = Vector2(1, -1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ba0x2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2124643878]
+polygon = PackedVector2Array(-107, -18, -84, -32, 84, -31, 111, -16)

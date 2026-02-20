@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://bwiclfwvr3fne"]
+
+[ext_resource type="Texture2D" uid="uid://bufxbxnawyo2e" path="res://assets/explosion/explosion_3_01.png" id="1_71omw"]
+[ext_resource type="Script" uid="uid://hs8x0ym1yaro" path="res://scenes/enemy_3.gd" id="1_dyjwk"]
+[ext_resource type="Texture2D" uid="uid://ru1irhnpdetc" path="res://assets/enemy/mine_12_01.png" id="1_nfosb"]
+[ext_resource type="Texture2D" uid="uid://dcbh7pa21srym" path="res://assets/enemy/mine_12_02.png" id="2_25yel"]
+[ext_resource type="Texture2D" uid="uid://cppawp8ot0njl" path="res://assets/explosion/explosion_3_02.png" id="2_dyjwk"]
+[ext_resource type="Texture2D" uid="uid://cwxl2fq3jp7gp" path="res://assets/enemy/mine_12_03.png" id="3_coowh"]
+[ext_resource type="Texture2D" uid="uid://owvnvcueteur" path="res://assets/explosion/explosion_3_03.png" id="3_wco83"]
+[ext_resource type="Texture2D" uid="uid://dqt5hxir0qy0t" path="res://assets/enemy/mine_12_04.png" id="4_fns3h"]
+[ext_resource type="Texture2D" uid="uid://bkimxngrw4fj3" path="res://assets/explosion/explosion_3_04.png" id="4_mq8go"]
+[ext_resource type="Texture2D" uid="uid://dla0fkuq7t8oo" path="res://assets/enemy/mine_12_05.png" id="5_bgvey"]
+[ext_resource type="Texture2D" uid="uid://de5sdy7qydcj0" path="res://assets/explosion/explosion_3_05.png" id="5_q5bdt"]
+[ext_resource type="Texture2D" uid="uid://cqsaxm6gwb4ey" path="res://assets/explosion/explosion_3_06.png" id="6_5n5md"]
+[ext_resource type="Texture2D" uid="uid://cltn2vb1012wc" path="res://assets/enemy/mine_12_06.png" id="6_f8njh"]
+[ext_resource type="Texture2D" uid="uid://tqv8ub13t4vq" path="res://assets/enemy/mine_12_07.png" id="7_qvg4t"]
+[ext_resource type="Texture2D" uid="uid://cgl3ody6oj2pv" path="res://assets/explosion/explosion_3_07.png" id="7_u3wrq"]
+[ext_resource type="Texture2D" uid="uid://dr0pbhysuotb0" path="res://assets/enemy/mine_12_08.png" id="8_7soxk"]
+[ext_resource type="Texture2D" uid="uid://ych28dr0ywqs" path="res://assets/explosion/explosion_3_08.png" id="8_khfop"]
+[ext_resource type="Texture2D" uid="uid://b7xsleg8tckqd" path="res://assets/explosion/explosion_3_09.png" id="9_8gjet"]
+[ext_resource type="Texture2D" uid="uid://turnefac3gg0" path="res://assets/enemy/mine_12_09.png" id="9_57y64"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wco83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_71omw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dyjwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wco83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mq8go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q5bdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5n5md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u3wrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_khfop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8gjet")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nfosb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_25yel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_coowh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fns3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bgvey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f8njh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qvg4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7soxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_57y64")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71omw"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyjwk"]
+radius = 30.016663
+
+[node name="enemy3" type="CharacterBody2D" unique_id=1868950644]
+script = ExtResource("1_dyjwk")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1115157478 groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wco83")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1003255876]
+shape = SubResource("CircleShape2D_71omw")
+
+[node name="enemyarea" type="Area2D" parent="." unique_id=1851962730]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyarea" unique_id=834755647]
+shape = SubResource("CircleShape2D_dyjwk")
+
+[connection signal="area_shape_entered" from="enemyarea" to="." method="_on_enemyarea_area_shape_entered"]

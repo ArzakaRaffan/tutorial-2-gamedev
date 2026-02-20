@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://cyk5p0pp8os55"]
+
+[ext_resource type="Shader" uid="uid://davpn4038rsk0" path="res://scenes/scroll1.gdshader" id="1_imgad"]
+[ext_resource type="Script" uid="uid://5rc2cxwjigeu" path="res://scenes/2_nd_level.gd" id="1_v0afw"]
+[ext_resource type="Texture2D" uid="uid://dpw7jevy1w4nn" path="res://assets/Starfields/Starfield_01-1024x1024.png" id="2_mkuii"]
+[ext_resource type="Shader" uid="uid://clqnxiuntynky" path="res://scenes/scroll2.gdshader" id="3_vluw3"]
+[ext_resource type="Texture2D" uid="uid://drxpxrf6sue0d" path="res://assets/Starfields/Starfield_03-1024x1024.png" id="4_v0afw"]
+[ext_resource type="PackedScene" uid="uid://dmefieew45hql" path="res://scenes/red_ship.tscn" id="6_wx84q"]
+[ext_resource type="PackedScene" uid="uid://dkhwyttfi2dn5" path="res://scenes/enemy_1.tscn" id="7_dkb8v"]
+[ext_resource type="PackedScene" uid="uid://mpsyfldf7f4h" path="res://scenes/platform.tscn" id="8_37kc2"]
+[ext_resource type="PackedScene" uid="uid://nlfypp3gavaf" path="res://scenes/enemy_2.tscn" id="9_1rlb8"]
+[ext_resource type="PackedScene" uid="uid://bwiclfwvr3fne" path="res://scenes/enemy_3.tscn" id="10_deaoy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vluw3"]
+shader = ExtResource("1_imgad")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx84q"]
+shader = ExtResource("3_vluw3")
+
+[node name="2nd_level" type="Node" unique_id=301554924]
+script = ExtResource("1_v0afw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=475693310]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=290514754]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vluw3")
+offset_right = 1147.0
+offset_bottom = 643.0
+texture = ExtResource("2_mkuii")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1614256087]
+modulate = Color(1, 1, 1, 0.41568628)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wx84q")
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_v0afw")
+
+[node name="red_ship" parent="." unique_id=590801696 instance=ExtResource("6_wx84q")]
+position = Vector2(555, 495)
+
+[node name="enemy2" parent="." unique_id=1251145545 instance=ExtResource("7_dkb8v")]
+position = Vector2(406, 199)
+
+[node name="enemy1" parent="." unique_id=1223449606 instance=ExtResource("7_dkb8v")]
+position = Vector2(580, 199)
+
+[node name="enemy6" parent="." unique_id=1421194668 instance=ExtResource("7_dkb8v")]
+position = Vector2(318, 199)
+
+[node name="enemy7" parent="." unique_id=39883561 instance=ExtResource("7_dkb8v")]
+position = Vector2(230, 199)
+
+[node name="enemy8" parent="." unique_id=1615928137 instance=ExtResource("7_dkb8v")]
+position = Vector2(150, 199)
+
+[node name="enemy9" parent="." unique_id=910305957 instance=ExtResource("7_dkb8v")]
+position = Vector2(58, 199)
+
+[node name="enemy10" parent="." unique_id=1798640151 instance=ExtResource("7_dkb8v")]
+position = Vector2(838, 200)
+
+[node name="enemy11" parent="." unique_id=1816453084 instance=ExtResource("7_dkb8v")]
+position = Vector2(919, 199)
+
+[node name="enemy12" parent="." unique_id=588429710 instance=ExtResource("7_dkb8v")]
+position = Vector2(1006, 199)
+
+[node name="enemy13" parent="." unique_id=1131062089 instance=ExtResource("7_dkb8v")]
+position = Vector2(1095, 199)
+
+[node name="enemy3" parent="." unique_id=1294826969 instance=ExtResource("7_dkb8v")]
+position = Vector2(490, 199)
+
+[node name="enemy4" parent="." unique_id=1656665080 instance=ExtResource("7_dkb8v")]
+position = Vector2(671, 199)
+
+[node name="enemy5" parent="." unique_id=1296117605 instance=ExtResource("7_dkb8v")]
+position = Vector2(750, 199)
+
+[node name="platform" parent="." unique_id=1812367699 instance=ExtResource("8_37kc2")]
+position = Vector2(537, 617)
+
+[node name="enemy14" parent="." unique_id=393830941 instance=ExtResource("9_1rlb8")]
+position = Vector2(56, 117)
+
+[node name="enemy15" parent="." unique_id=857778891 instance=ExtResource("9_1rlb8")]
+position = Vector2(145, 118)
+
+[node name="enemy16" parent="." unique_id=1143391862 instance=ExtResource("9_1rlb8")]
+position = Vector2(227, 117)
+
+[node name="enemy17" parent="." unique_id=493071384 instance=ExtResource("9_1rlb8")]
+position = Vector2(316, 116)
+
+[node name="enemy18" parent="." unique_id=896373962 instance=ExtResource("9_1rlb8")]
+position = Vector2(406, 115)
+
+[node name="enemy19" parent="." unique_id=50067103 instance=ExtResource("9_1rlb8")]
+position = Vector2(490, 117)
+
+[node name="enemy20" parent="." unique_id=1752448756 instance=ExtResource("9_1rlb8")]
+position = Vector2(578, 119)
+
+[node name="enemy21" parent="." unique_id=976325009 instance=ExtResource("9_1rlb8")]
+position = Vector2(670, 116)
+
+[node name="enemy22" parent="." unique_id=812874756 instance=ExtResource("9_1rlb8")]
+position = Vector2(751, 116)
+
+[node name="enemy23" parent="." unique_id=737621505 instance=ExtResource("9_1rlb8")]
+position = Vector2(832, 115)
+
+[node name="enemy24" parent="." unique_id=173511293 instance=ExtResource("9_1rlb8")]
+position = Vector2(916, 112)
+
+[node name="enemy25" parent="." unique_id=2133561553 instance=ExtResource("9_1rlb8")]
+position = Vector2(1001, 111)
+
+[node name="enemy26" parent="." unique_id=1414878409 instance=ExtResource("9_1rlb8")]
+position = Vector2(1090, 114)
+
+[node name="enemy27" parent="." unique_id=1868950644 instance=ExtResource("10_deaoy")]
+position = Vector2(59, 43)
+
+[node name="enemy28" parent="." unique_id=1934899692 instance=ExtResource("10_deaoy")]
+position = Vector2(148, 44)
+
+[node name="enemy29" parent="." unique_id=1534920125 instance=ExtResource("10_deaoy")]
+position = Vector2(230.00002, 45)
+rotation = -0.06783773
+
+[node name="enemy30" parent="." unique_id=29031894 instance=ExtResource("10_deaoy")]
+position = Vector2(314.00003, 44)
+rotation = -0.06783773
+
+[node name="enemy31" parent="." unique_id=286274028 instance=ExtResource("10_deaoy")]
+position = Vector2(405, 42)
+rotation = -0.29379505
+
+[node name="enemy32" parent="." unique_id=1587282148 instance=ExtResource("10_deaoy")]
+position = Vector2(494, 42)
+rotation = -0.29379505
+
+[node name="enemy33" parent="." unique_id=158922567 instance=ExtResource("10_deaoy")]
+position = Vector2(577, 42)
+rotation = -0.29379505
+
+[node name="enemy34" parent="." unique_id=306080716 instance=ExtResource("10_deaoy")]
+position = Vector2(669, 37.000015)
+rotation = -0.29379505
+
+[node name="enemy35" parent="." unique_id=2046044957 instance=ExtResource("10_deaoy")]
+position = Vector2(755, 38)
+rotation = -0.29379505
+
+[node name="enemy36" parent="." unique_id=1203725727 instance=ExtResource("10_deaoy")]
+position = Vector2(833.00006, 39)
+rotation = -0.29379505
+
+[node name="enemy37" parent="." unique_id=1210836938 instance=ExtResource("10_deaoy")]
+position = Vector2(915, 37.999985)
+rotation = -0.29379505
+
+[node name="enemy38" parent="." unique_id=1749442615 instance=ExtResource("10_deaoy")]
+position = Vector2(999.00006, 36.000015)
+rotation = -0.29379505
+
+[node name="enemy39" parent="." unique_id=201527967 instance=ExtResource("10_deaoy")]
+position = Vector2(1091, 34.999985)
+rotation = -0.29379505

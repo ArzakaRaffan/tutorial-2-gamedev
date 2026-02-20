@@ -1,2 +1,6 @@
+res://scenes/2_nd_level.gd
 res://default_env.tres
-res://scenes/MainLevel.tscn
+res://scenes/2nd_level.tscn
+res://scenes/scroll1.gdshader
+res://scenes/scroll2.gdshader
+res://scenes/StonePlatform.tscn

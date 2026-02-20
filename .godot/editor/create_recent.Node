@@ -1,0 +1,14 @@
+CollisionShape2D
+Area2D
+TextureButton
+TextureRect
+Sprite2D
+RigidBody2D
+Node2D
+Node
+AnimatedSprite2D
+CharacterBody2D
+StaticBody2D
+CollisionPolygon2D
+Marker2D
+ColorRect

@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://dkhwyttfi2dn5"]
+
+[ext_resource type="Texture2D" uid="uid://bm6qpmrv172ja" path="res://assets/explosion/explosion_1_01.png" id="1_4ume3"]
+[ext_resource type="Script" uid="uid://bv88p3aew8dl6" path="res://scenes/enemy_1.gd" id="1_k5ap6"]
+[ext_resource type="Texture2D" uid="uid://8rbc2ukruukp" path="res://assets/enemy/mine_1_01.png" id="1_oweuj"]
+[ext_resource type="Texture2D" uid="uid://3lko6igcfwud" path="res://assets/enemy/mine_1_02.png" id="2_hcr21"]
+[ext_resource type="Texture2D" uid="uid://cnxhesj0ivaic" path="res://assets/explosion/explosion_1_02.png" id="2_k5ap6"]
+[ext_resource type="Texture2D" uid="uid://ct2qdb8d74ynv" path="res://assets/explosion/explosion_1_03.png" id="3_eb5of"]
+[ext_resource type="Texture2D" uid="uid://dus74eem7t4b6" path="res://assets/enemy/mine_1_03.png" id="3_x5oq2"]
+[ext_resource type="Texture2D" uid="uid://bdvysnkc11kmp" path="res://assets/enemy/mine_1_04.png" id="4_m468s"]
+[ext_resource type="Texture2D" uid="uid://d0x73c2e3bfts" path="res://assets/explosion/explosion_1_04.png" id="4_up3er"]
+[ext_resource type="Texture2D" uid="uid://b0yksmxk2oxp4" path="res://assets/explosion/explosion_1_05.png" id="5_4s5yk"]
+[ext_resource type="Texture2D" uid="uid://bncpgjx6jrupt" path="res://assets/enemy/mine_1_05.png" id="5_jvuks"]
+[ext_resource type="Texture2D" uid="uid://q2naj3vrb6tr" path="res://assets/explosion/explosion_1_06.png" id="6_if6mg"]
+[ext_resource type="Texture2D" uid="uid://dj2h0p1rhbh5v" path="res://assets/enemy/mine_1_07.png" id="6_tcrox"]
+[ext_resource type="Texture2D" uid="uid://bqc2iy7w1254e" path="res://assets/enemy/mine_1_08.png" id="7_va0nx"]
+[ext_resource type="Texture2D" uid="uid://6hgjharmlg0y" path="res://assets/explosion/explosion_1_07.png" id="7_yxwnd"]
+[ext_resource type="Texture2D" uid="uid://dkl8jnh1thoqu" path="res://assets/explosion/explosion_1_08.png" id="8_ld0t2"]
+[ext_resource type="Texture2D" uid="uid://d32co6mrch42e" path="res://assets/enemy/mine_1_09.png" id="8_n1sbf"]
+[ext_resource type="Texture2D" uid="uid://c1e50rsvk2dxb" path="res://assets/explosion/explosion_1_09.png" id="9_iwax2"]
+[ext_resource type="Texture2D" uid="uid://dlb2au1atynyd" path="res://assets/explosion/explosion_1_10.png" id="10_8femu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o262f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4ume3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k5ap6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eb5of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_up3er")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4s5yk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_if6mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yxwnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ld0t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iwax2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8femu")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oweuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hcr21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x5oq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m468s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jvuks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tcrox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_va0nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n1sbf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_umrl8"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oweuj"]
+radius = 32.0
+
+[node name="enemy1" type="CharacterBody2D" unique_id=1223449606 groups=["enemy"]]
+script = ExtResource("1_k5ap6")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=668636266]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_o262f")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=882640924]
+shape = SubResource("CircleShape2D_umrl8")
+
+[node name="area" type="Area2D" parent="." unique_id=12196941 groups=["bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area" unique_id=629696987]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_oweuj")
+
+[connection signal="area_shape_entered" from="area" to="." method="_on_area_area_shape_entered"]

@@ -1,14 +1,97 @@
 [gd_scene format=3 uid="uid://cdoksexcakmop"]
 
 [ext_resource type="PackedScene" uid="uid://y5a4e3ajuy2r" path="res://scenes/StonePlatform.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bfehwduvtc8b" path="res://scenes/main_level.gd" id="1_7xuin"]
 [ext_resource type="PackedScene" uid="uid://datfp8kxjrjg" path="res://scenes/BlueShip.tscn" id="2"]
 [ext_resource type="Script" uid="uid://bsuv2svmaqypq" path="res://scenes/PlatformBlue.gd" id="3"]
 [ext_resource type="Script" uid="uid://x2rdmjyr1ttw" path="res://scenes/ObjectiveArea.gd" id="4"]
+[ext_resource type="Script" uid="uid://hp1v7lhlpput" path="res://scenes/win.gd" id="5_2cvyt"]
+[ext_resource type="Texture2D" uid="uid://cnafd6vblu2p1" path="res://assets/UI/Panel.png" id="5_wcvik"]
+[ext_resource type="Texture2D" uid="uid://chwdvkfm6a15m" path="res://assets/UI/TextEditBlack.png" id="6_2cvyt"]
+[ext_resource type="Texture2D" uid="uid://dxgf41vm6c26b" path="res://assets/UI/SWIcon_32_Transparent.png" id="6_6ib6r"]
+[ext_resource type="Texture2D" uid="uid://b6teqj58y4tft" path="res://assets/UI/ButtonClose1.png" id="7_2cvyt"]
+[ext_resource type="Texture2D" uid="uid://bggpv8rghtuqb" path="res://assets/UI/Close Hover.png" id="10_6ib6r"]
+[ext_resource type="FontFile" uid="uid://b1jwwy05v0fei" path="res://assets/fonts/cosmic_alien/ca.ttf" id="12_4t260"]
+[ext_resource type="Texture2D" uid="uid://b3h3lmw568esk" path="res://assets/UI/button.png" id="12_wd4wg"]
+[ext_resource type="Texture2D" uid="uid://betc41ag32sh3" path="res://assets/UI/hovered.png" id="13_7xuin"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(138.75, 79)
+size = Vector2(138.75, 56.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7xuin"]
+load_path = "res://.godot/imported/Tab.png-bd6413ddae73e75267f35db7afe8e512.ctex"
+
+[sub_resource type="Animation" id="Animation_4t260"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wd4wg"]
+resource_name = "idling"
+length = 0.75
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7xuin"]
+resource_name = "typing"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqv6b"]
+_data = {
+&"RESET": SubResource("Animation_4t260"),
+&"idling": SubResource("Animation_wd4wg"),
+&"typing": SubResource("Animation_7xuin")
+}
 
 [node name="MainLevel" type="Node" unique_id=832108525]
+script = ExtResource("1_7xuin")
 
 [node name="PlatformBlue" type="Node2D" parent="." unique_id=1028510209]
 position = Vector2(35, 565)
@@ -21,13 +104,95 @@ position = Vector2(70, 0)
 
 [node name="BlueShip" parent="." unique_id=150247224 instance=ExtResource("2")]
 position = Vector2(72.7009, 421.901)
+mass = 200.0
+gravity_scale = 1.0
 lock_rotation = true
 
 [node name="ObjectiveArea" type="Area2D" parent="." unique_id=779178061]
 script = ExtResource("4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea" unique_id=670694693]
-position = Vector2(70.625, 40)
+position = Vector2(70, -87.25)
 shape = SubResource("1")
 
+[node name="win" type="Node2D" parent="." unique_id=2143110601]
+visible = false
+script = ExtResource("5_2cvyt")
+
+[node name="Panel" type="Sprite2D" parent="win" unique_id=536178858]
+texture_filter = 1
+position = Vector2(581, 294)
+scale = Vector2(15, 15)
+texture = ExtResource("5_wcvik")
+
+[node name="Tab" type="Sprite2D" parent="win" unique_id=1004628527]
+texture_filter = 1
+position = Vector2(574, 296.5)
+scale = Vector2(12, 11.21875)
+texture = SubResource("CompressedTexture2D_7xuin")
+
+[node name="TextEditBlack" type="Sprite2D" parent="win" unique_id=148729404]
+texture_filter = 1
+position = Vector2(573.5, 295.5)
+scale = Vector2(7.4130435, 6.891305)
+texture = ExtResource("6_2cvyt")
+
+[node name="SwIcon32Transparent" type="Sprite2D" parent="win" unique_id=656162702]
+texture_filter = 1
+position = Vector2(422.00003, 117)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_6ib6r")
+
+[node name="TextureButton2" type="TextureButton" parent="win" unique_id=283731034]
+texture_filter = 1
+offset_left = 710.0
+offset_top = 104.0
+offset_right = 730.0
+offset_bottom = 124.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("7_2cvyt")
+texture_hover = ExtResource("10_6ib6r")
+
+[node name="Label" type="Label" parent="win" unique_id=1140280578]
+texture_filter = 1
+offset_left = 445.0
+offset_top = 181.0
+offset_right = 2301.0
+offset_bottom = 680.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.29411766, 0.80784315, 0, 1)
+theme_override_fonts/font = ExtResource("12_4t260")
+theme_override_font_sizes/font_size = 275
+text = "Level 1
+Completed"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="win" unique_id=1941772811]
+libraries/ = SubResource("AnimationLibrary_rqv6b")
+
+[node name="Label2" type="Label" parent="win" unique_id=1611478583]
+offset_left = 633.0
+offset_top = 205.0
+offset_right = 821.0
+offset_bottom = 430.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.29411766, 0.80784315, 0, 1)
+theme_override_fonts/font = ExtResource("12_4t260")
+theme_override_font_sizes/font_size = 250
+text = "_"
+
+[node name="ContinueButton" type="TextureButton" parent="win" unique_id=1652269613]
+visible = false
+texture_filter = 1
+offset_left = 443.0
+offset_top = 252.00002
+offset_right = 997.0
+offset_bottom = 299.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("12_wd4wg")
+texture_pressed = ExtResource("13_7xuin")
+texture_hover = ExtResource("13_7xuin")
+
 [connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]
+[connection signal="pressed" from="win/ContinueButton" to="win" method="_on_continue_button_pressed"]

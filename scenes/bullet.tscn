@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://c2cxby3sox0g6"]
+
+[ext_resource type="Script" uid="uid://2unfllvkoh8e" path="res://scenes/bullet.gd" id="0_script"]
+[ext_resource type="Texture2D" uid="uid://bx3dmkxf4lw6i" path="res://assets/exhaust_01.png" id="1_qncy5"]
+[ext_resource type="Texture2D" uid="uid://b2t3wsdkcudh2" path="res://assets/exhaust_02.png" id="2_tamys"]
+[ext_resource type="Texture2D" uid="uid://d23ca8k3qb7hw" path="res://assets/exhaust_03.png" id="3_26lx3"]
+[ext_resource type="Texture2D" uid="uid://640rwxgjabnj" path="res://assets/exhaust_04.png" id="4_1cfmv"]
+[ext_resource type="Texture2D" uid="uid://csxe1v7ywk05c" path="res://assets/exhaust_05.png" id="5_k76ql"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1aey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qncy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tamys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_26lx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1cfmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k76ql")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qncy5"]
+radius = 8.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tamys"]
+
+[node name="bullet" type="CharacterBody2D" unique_id=1645671666]
+script = ExtResource("0_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1815969882]
+texture_filter = 1
+position = Vector2(-11, 0)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_h1aey")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.90530264
+
+[node name="bulletarea" type="Area2D" parent="." unique_id=310774314 groups=["bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bulletarea" unique_id=1325781537]
+position = Vector2(-14, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qncy5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=458540910]
+position = Vector2(27, 2)
+shape = SubResource("CapsuleShape2D_tamys")
+disabled = true

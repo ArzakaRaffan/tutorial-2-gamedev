@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmefieew45hql"]
+
+[ext_resource type="Texture2D" uid="uid://cfbxn1dobehul" path="res://assets/player_r_m.png" id="1_2ix1i"]
+[ext_resource type="Script" uid="uid://bbrxrfh3jv0fq" path="res://scenes/red_ship.gd" id="1_fqnvj"]
+
+[node name="red_ship" type="RigidBody2D" unique_id=590801696]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("1_fqnvj")
+BASE_SPEED = 750.0
+
+[node name="PlayerRM" type="Sprite2D" parent="." unique_id=1666640930]
+texture_filter = 1
+position = Vector2(-30, 1)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_2ix1i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=874932617]
+position = Vector2(-35, 2)
+rotation = 1.5707964
+polygon = PackedVector2Array(-3, -42, 2, -40, 6, -30, 9, -18, 19, -9, 22, -8, 22, 2, 34, 12, 30, 23, 19, 19, 16, 21, 19, 27, 13, 32, 6, 29, 3, 27, -7, 27, -15, 32, -19, 32, -22, 24, -20, 22, -24, 18, -33, 22, -37, 9, -27, 2, -25, -9, -19, -9, -16, -15, -9, -30, -7, -37)
+
+[node name="endpoint" type="Marker2D" parent="." unique_id=624007367]
+position = Vector2(8, -1)

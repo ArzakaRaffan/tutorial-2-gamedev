@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bse1y733t43ud"]
+
+[ext_resource type="Script" uid="uid://bqdhqotqu2lfd" path="res://global/transition.gd" id="1_0uuyc"]
+[ext_resource type="Texture2D" uid="uid://d3yvu6suot8gl" path="res://assets/Terran.png" id="1_o2xgr"]
+
+[sub_resource type="Animation" id="Animation_0uuyc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("earth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(551.00006, 1368.0001)]
+}
+
+[sub_resource type="Animation" id="Animation_o2xgr"]
+resource_name = "close"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("earth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(551.00006, 1368.0001), Vector2(551, 250)]
+}
+
+[sub_resource type="Animation" id="Animation_02fba"]
+resource_name = "open"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("earth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(551, 250), Vector2(551, -720)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uuyc"]
+_data = {
+&"RESET": SubResource("Animation_0uuyc"),
+&"close": SubResource("Animation_o2xgr"),
+&"open": SubResource("Animation_02fba")
+}
+
+[node name="Transition" type="Node2D" unique_id=1450229082]
+z_index = 999
+script = ExtResource("1_0uuyc")
+
+[node name="animation" type="AnimationPlayer" parent="." unique_id=630148883]
+libraries/ = SubResource("AnimationLibrary_0uuyc")
+
+[node name="earth" type="Sprite2D" parent="." unique_id=1612282458]
+texture_filter = 1
+position = Vector2(551.00006, 1368.0001)
+scale = Vector2(30, 30)
+texture = ExtResource("1_o2xgr")

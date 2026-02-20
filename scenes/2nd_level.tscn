@@ -1,0 +1,434 @@
+[gd_scene format=3 uid="uid://cyk5p0pp8os55"]
+
+[ext_resource type="Shader" uid="uid://davpn4038rsk0" path="res://scenes/scroll1.gdshader" id="1_imgad"]
+[ext_resource type="Script" uid="uid://5rc2cxwjigeu" path="res://scenes/2_nd_level.gd" id="1_v0afw"]
+[ext_resource type="Texture2D" uid="uid://dpw7jevy1w4nn" path="res://assets/Starfields/Starfield_01-1024x1024.png" id="2_mkuii"]
+[ext_resource type="Shader" uid="uid://clqnxiuntynky" path="res://scenes/scroll2.gdshader" id="3_vluw3"]
+[ext_resource type="Texture2D" uid="uid://drxpxrf6sue0d" path="res://assets/Starfields/Starfield_03-1024x1024.png" id="4_v0afw"]
+[ext_resource type="PackedScene" uid="uid://dmefieew45hql" path="res://scenes/red_ship.tscn" id="6_wx84q"]
+[ext_resource type="PackedScene" uid="uid://dkhwyttfi2dn5" path="res://scenes/enemy_1.tscn" id="7_dkb8v"]
+[ext_resource type="PackedScene" uid="uid://mpsyfldf7f4h" path="res://scenes/platform.tscn" id="8_37kc2"]
+[ext_resource type="PackedScene" uid="uid://nlfypp3gavaf" path="res://scenes/enemy_2.tscn" id="9_1rlb8"]
+[ext_resource type="PackedScene" uid="uid://bwiclfwvr3fne" path="res://scenes/enemy_3.tscn" id="10_deaoy"]
+[ext_resource type="Script" uid="uid://baerssbdcjopr" path="res://scenes/win2.gd" id="11_jkfcp"]
+[ext_resource type="Script" uid="uid://djdofmuhyqypg" path="res://scenes/lose.gd" id="11_vvoji"]
+[ext_resource type="Texture2D" uid="uid://cnafd6vblu2p1" path="res://assets/UI/Panel.png" id="12_h4mcq"]
+[ext_resource type="Texture2D" uid="uid://chwdvkfm6a15m" path="res://assets/UI/TextEditBlack.png" id="13_5t6rn"]
+[ext_resource type="Texture2D" uid="uid://dxgf41vm6c26b" path="res://assets/UI/SWIcon_32_Transparent.png" id="14_jkfcp"]
+[ext_resource type="Texture2D" uid="uid://b6teqj58y4tft" path="res://assets/UI/ButtonClose1.png" id="15_rb1m0"]
+[ext_resource type="Texture2D" uid="uid://bggpv8rghtuqb" path="res://assets/UI/Close Hover.png" id="16_0plgo"]
+[ext_resource type="FontFile" uid="uid://b1jwwy05v0fei" path="res://assets/fonts/cosmic_alien/ca.ttf" id="17_1intv"]
+[ext_resource type="Texture2D" uid="uid://bgytlwjqq0laa" path="res://assets/UI/_Try Again_.png" id="17_n1126"]
+[ext_resource type="Script" uid="uid://nf0g5r016f6c" path="res://scenes/try_again.gd" id="17_rhkib"]
+[ext_resource type="Texture2D" uid="uid://bmx6klfoc2ecv" path="res://assets/UI/_Main Menu_.png" id="18_jkfcp"]
+[ext_resource type="Texture2D" uid="uid://lurdc12ru83o" path="res://assets/UI/Main Menu Hover.png" id="19_rb1m0"]
+[ext_resource type="Texture2D" uid="uid://dh610bbucs6rh" path="res://assets/fasilkom.png" id="23_rb1m0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vluw3"]
+shader = ExtResource("1_imgad")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx84q"]
+shader = ExtResource("3_vluw3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deaoy"]
+size = Vector2(1152, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5t6rn"]
+load_path = "res://.godot/imported/Tab.png-bd6413ddae73e75267f35db7afe8e512.ctex"
+
+[sub_resource type="Animation" id="Animation_4t260"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wd4wg"]
+resource_name = "idling"
+length = 0.75
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7xuin"]
+resource_name = "typing"
+length = 2.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkfcp"]
+_data = {
+&"RESET": SubResource("Animation_4t260"),
+&"idling": SubResource("Animation_wd4wg"),
+&"typing": SubResource("Animation_7xuin")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7xuin"]
+load_path = "res://.godot/imported/Tab.png-bd6413ddae73e75267f35db7afe8e512.ctex"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqv6b"]
+_data = {
+&"RESET": SubResource("Animation_4t260"),
+&"idling": SubResource("Animation_wd4wg"),
+&"typing": SubResource("Animation_7xuin")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhkib"]
+size = Vector2(188, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0plgo"]
+radius = 31.04835
+
+[node name="2nd_level" type="Node" unique_id=301554924]
+script = ExtResource("1_v0afw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=475693310]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=290514754]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vluw3")
+offset_right = 1147.0
+offset_bottom = 643.0
+texture = ExtResource("2_mkuii")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1614256087]
+modulate = Color(1, 1, 1, 0.41568628)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wx84q")
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_v0afw")
+
+[node name="red_ship" parent="." unique_id=590801696 instance=ExtResource("6_wx84q")]
+position = Vector2(621, 333)
+
+[node name="enemy_level1" type="Node2D" parent="." unique_id=227630231]
+
+[node name="enemy2" parent="enemy_level1" unique_id=1251145545 instance=ExtResource("7_dkb8v")]
+position = Vector2(700, 199)
+
+[node name="enemy3" parent="enemy_level1" unique_id=1223449606 instance=ExtResource("7_dkb8v")]
+position = Vector2(573, 212)
+
+[node name="enemy6" parent="enemy_level1" unique_id=1421194668 instance=ExtResource("7_dkb8v")]
+position = Vector2(450, 199)
+
+[node name="enemy7" parent="enemy_level1" unique_id=39883561 instance=ExtResource("7_dkb8v")]
+position = Vector2(334, 213)
+
+[node name="enemy8" parent="enemy_level1" unique_id=1615928137 instance=ExtResource("7_dkb8v")]
+position = Vector2(219, 201)
+
+[node name="enemy9" parent="enemy_level1" unique_id=910305957 instance=ExtResource("7_dkb8v")]
+position = Vector2(98, 208)
+
+[node name="enemy10" parent="enemy_level1" unique_id=1798640151 instance=ExtResource("7_dkb8v")]
+position = Vector2(1047, 220)
+
+[node name="enemy4" parent="enemy_level1" unique_id=1656665080 instance=ExtResource("7_dkb8v")]
+position = Vector2(818, 217)
+
+[node name="enemy5" parent="enemy_level1" unique_id=1296117605 instance=ExtResource("7_dkb8v")]
+position = Vector2(934, 200)
+
+[node name="enemy_level2" type="Node2D" parent="." unique_id=42128008]
+
+[node name="enemy15" parent="enemy_level2" unique_id=857778891 instance=ExtResource("9_1rlb8")]
+position = Vector2(159, 137)
+
+[node name="enemy16" parent="enemy_level2" unique_id=1143391862 instance=ExtResource("9_1rlb8")]
+position = Vector2(274, 118)
+
+[node name="enemy18" parent="enemy_level2" unique_id=896373962 instance=ExtResource("9_1rlb8")]
+position = Vector2(388, 135)
+
+[node name="enemy19" parent="enemy_level2" unique_id=50067103 instance=ExtResource("9_1rlb8")]
+position = Vector2(511, 121)
+
+[node name="enemy20" parent="enemy_level2" unique_id=1752448756 instance=ExtResource("9_1rlb8")]
+position = Vector2(635, 137)
+
+[node name="enemy21" parent="enemy_level2" unique_id=976325009 instance=ExtResource("9_1rlb8")]
+position = Vector2(760, 116)
+
+[node name="enemy23" parent="enemy_level2" unique_id=737621505 instance=ExtResource("9_1rlb8")]
+position = Vector2(875, 131)
+
+[node name="enemy24" parent="enemy_level2" unique_id=173511293 instance=ExtResource("9_1rlb8")]
+position = Vector2(987, 113)
+
+[node name="enemy_level3" type="Node2D" parent="." unique_id=968621815]
+
+[node name="enemy27" parent="enemy_level3" unique_id=1868950644 instance=ExtResource("10_deaoy")]
+position = Vector2(78, 71)
+
+[node name="enemy29" parent="enemy_level3" unique_id=1534920125 instance=ExtResource("10_deaoy")]
+position = Vector2(212.00002, 46)
+rotation = -0.06783773
+
+[node name="enemy31" parent="enemy_level3" unique_id=286274028 instance=ExtResource("10_deaoy")]
+position = Vector2(334, 42.000015)
+rotation = -0.29379505
+
+[node name="enemy32" parent="enemy_level3" unique_id=1587282148 instance=ExtResource("10_deaoy")]
+position = Vector2(445.99997, 53.000023)
+rotation = -0.29379505
+
+[node name="enemy33" parent="enemy_level3" unique_id=158922567 instance=ExtResource("10_deaoy")]
+position = Vector2(577, 42)
+rotation = -0.29379505
+
+[node name="enemy35" parent="enemy_level3" unique_id=2046044957 instance=ExtResource("10_deaoy")]
+position = Vector2(695.99994, 60.000015)
+rotation = -0.29379505
+
+[node name="enemy36" parent="enemy_level3" unique_id=1203725727 instance=ExtResource("10_deaoy")]
+position = Vector2(815, 42.999985)
+rotation = -0.29379505
+
+[node name="enemy37" parent="enemy_level3" unique_id=1210836938 instance=ExtResource("10_deaoy")]
+position = Vector2(936.00006, 42.000015)
+rotation = -0.29379505
+
+[node name="enemy39" parent="enemy_level3" unique_id=201527967 instance=ExtResource("10_deaoy")]
+position = Vector2(1079, 71.999985)
+rotation = -0.29379505
+
+[node name="platform" parent="." unique_id=1812367699 instance=ExtResource("8_37kc2")]
+position = Vector2(581, 598)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=273577433]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=837621347]
+position = Vector2(576, 712)
+shape = SubResource("RectangleShape2D_deaoy")
+
+[node name="win" type="Node2D" parent="." unique_id=1765782310]
+visible = false
+script = ExtResource("11_jkfcp")
+
+[node name="Panel" type="Sprite2D" parent="win" unique_id=556421874]
+texture_filter = 1
+position = Vector2(581, 294)
+scale = Vector2(15, 15)
+texture = ExtResource("12_h4mcq")
+
+[node name="Tab" type="Sprite2D" parent="win" unique_id=1328389492]
+texture_filter = 1
+position = Vector2(574, 296.5)
+scale = Vector2(12, 11.21875)
+texture = SubResource("CompressedTexture2D_5t6rn")
+
+[node name="TextEditBlack" type="Sprite2D" parent="win" unique_id=534520805]
+texture_filter = 1
+position = Vector2(573.5, 295.5)
+scale = Vector2(7.4130435, 6.891305)
+texture = ExtResource("13_5t6rn")
+
+[node name="SwIcon32Transparent" type="Sprite2D" parent="win" unique_id=1385012250]
+texture_filter = 1
+position = Vector2(422.00003, 117)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_jkfcp")
+
+[node name="TextureButton2" type="TextureButton" parent="win" unique_id=1792325002]
+texture_filter = 1
+offset_left = 710.0
+offset_top = 104.0
+offset_right = 730.0
+offset_bottom = 124.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("15_rb1m0")
+texture_hover = ExtResource("16_0plgo")
+
+[node name="Label" type="Label" parent="win" unique_id=342991677]
+texture_filter = 1
+offset_left = 445.0
+offset_top = 181.0
+offset_right = 2301.0
+offset_bottom = 680.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.29411766, 0.80784315, 0, 1)
+theme_override_fonts/font = ExtResource("17_1intv")
+theme_override_font_sizes/font_size = 275
+text = "Level 2
+Completed"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="win" unique_id=1033023407]
+libraries/ = SubResource("AnimationLibrary_jkfcp")
+
+[node name="Label2" type="Label" parent="win" unique_id=285508450]
+offset_left = 633.0
+offset_top = 205.0
+offset_right = 821.0
+offset_bottom = 430.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.29411766, 0.80784315, 0, 1)
+theme_override_fonts/font = ExtResource("17_1intv")
+theme_override_font_sizes/font_size = 250
+text = "_"
+
+[node name="TextureButton" type="TextureButton" parent="win" unique_id=344486608]
+offset_left = 448.0
+offset_top = 269.0
+offset_right = 720.0
+offset_bottom = 387.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("18_jkfcp")
+texture_pressed = ExtResource("19_rb1m0")
+texture_hover = ExtResource("19_rb1m0")
+
+[node name="lose" type="Node2D" parent="." unique_id=933168394]
+visible = false
+script = ExtResource("11_vvoji")
+
+[node name="Panel" type="Sprite2D" parent="lose" unique_id=1322687733]
+texture_filter = 1
+position = Vector2(581, 294)
+scale = Vector2(15, 15)
+texture = ExtResource("12_h4mcq")
+
+[node name="Tab" type="Sprite2D" parent="lose" unique_id=750018400]
+texture_filter = 1
+position = Vector2(574, 296.5)
+scale = Vector2(12, 11.21875)
+texture = SubResource("CompressedTexture2D_7xuin")
+
+[node name="TextEditBlack" type="Sprite2D" parent="lose" unique_id=335031341]
+texture_filter = 1
+position = Vector2(573.5, 295.5)
+scale = Vector2(7.4130435, 6.891305)
+texture = ExtResource("13_5t6rn")
+
+[node name="SwIcon32Transparent" type="Sprite2D" parent="lose" unique_id=323856530]
+texture_filter = 1
+position = Vector2(422.00003, 117)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_jkfcp")
+
+[node name="TextureButton2" type="TextureButton" parent="lose" unique_id=2097808226]
+texture_filter = 1
+offset_left = 710.0
+offset_top = 104.0
+offset_right = 730.0
+offset_bottom = 124.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("15_rb1m0")
+texture_hover = ExtResource("16_0plgo")
+
+[node name="Label" type="Label" parent="lose" unique_id=437900273]
+texture_filter = 1
+offset_left = 445.0
+offset_top = 181.0
+offset_right = 2301.0
+offset_bottom = 680.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.29411766, 0.80784315, 0, 1)
+theme_override_fonts/font = ExtResource("17_1intv")
+theme_override_font_sizes/font_size = 275
+text = "You
+Lose!!!"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="lose" unique_id=1042687480]
+libraries/ = SubResource("AnimationLibrary_rqv6b")
+
+[node name="Label2" type="Label" parent="lose" unique_id=1570124782]
+offset_left = 575.0
+offset_top = 206.0
+offset_right = 763.0
+offset_bottom = 431.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.29411766, 0.80784315, 0, 1)
+theme_override_fonts/font = ExtResource("17_1intv")
+theme_override_font_sizes/font_size = 250
+text = "_"
+
+[node name="Try Again" type="RigidBody2D" parent="lose" unique_id=2129987420]
+visible = false
+mass = 100.0
+freeze = true
+script = ExtResource("17_rhkib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lose/Try Again" unique_id=419993820]
+position = Vector2(538, 261)
+shape = SubResource("RectangleShape2D_rhkib")
+
+[node name="Sprite2D" type="Sprite2D" parent="lose/Try Again" unique_id=58971036]
+texture_filter = 1
+position = Vector2(536, 262)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_n1126")
+
+[node name="Area2D" type="Area2D" parent="lose/Try Again" unique_id=1897335415]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lose/Try Again/Area2D" unique_id=839474458]
+position = Vector2(537, 261)
+shape = SubResource("RectangleShape2D_rhkib")
+
+[node name="finish" type="Area2D" parent="." unique_id=934053037]
+visible = false
+
+[node name="Fasilkom" type="Sprite2D" parent="finish" unique_id=201567460]
+position = Vector2(1107, 335)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_rb1m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="finish" unique_id=1576286886]
+position = Vector2(1106, 337)
+shape = SubResource("CircleShape2D_0plgo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="win/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="input_event" from="lose/Try Again/Area2D" to="lose/Try Again" method="_on_area_2d_input_event"]
+[connection signal="body_entered" from="finish" to="." method="_on_finish_body_entered"]
